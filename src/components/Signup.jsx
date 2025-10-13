@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../store/authSlice";
 import { useDispatch } from "react-redux";
-import { Button, Input, Logo } from "./index";
+import { Button, Input, logo } from "./index";
 
 function Signup() {
   const navigate = useNavigate();

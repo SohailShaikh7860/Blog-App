@@ -6,6 +6,14 @@ import Logout from "./Header/Logout";
 import Button from "./Button"
 import Input from "./Input"
 import RTE from "./RTE";
+import Signup from "./Signup";
+import Login from "./Login";
+import PostCard from "./PostCard"
+import PostForm from "./post-form/PostForm"
+import AuthLayout from "./AuthLayout";
+import AllPost from "./pages/AllPost";
+import AddPost from "./pages/AddPost";
+import EditPost from "./pages/EditPost";
 export{
     Header,
     Footer,
@@ -14,5 +22,13 @@ export{
     Button,
     Input,
     Logout,
-    RTE
+    RTE,
+    Signup,
+    Login,
+    PostCard,
+    PostForm,
+    AuthLayout,
+    AllPost,
+    AddPost,
+    EditPost
 }
