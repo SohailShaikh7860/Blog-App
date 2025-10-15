@@ -1,9 +1,10 @@
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from'react-redux';
 import authService from './appwrite/auth';
 import { login,logout } from './store/authSlice';
 import './App.css'
-import { Header, Footer } from './components';
+import { Header, Footer, Login, Signup, PostCard, PostForm, AuthLayout } from './components';
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
      
@@ -25,10 +26,18 @@ function App() {
      return !loading ? (
       <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
         <div className='w-full block'>
-          Hello there
           <Header />
           <main>
-              TODO:  
+            <Routes>
+              <Route path="/" element={<div className='p-4'>Home</div>} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/add-post" element={
+                <AuthLayout authenticated={true}>
+                  <PostForm />
+                </AuthLayout>
+              } />
+            </Routes>
           </main>
           <Footer />
         </div>

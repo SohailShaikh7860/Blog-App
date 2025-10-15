@@ -1,11 +1,12 @@
 import React from 'react'
 
-function logo() {
+function Logo({ width = "100px", className = "" }) {
   return (
-    <div>
-      
+    <div className={className} style={{ width }}>
+      {/* Simple text logo placeholder */}
+      <span className="font-extrabold text-xl">BlogApp</span>
     </div>
   )
 }
 
-export default logo
+export default Logo

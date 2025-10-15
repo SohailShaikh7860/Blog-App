@@ -9,7 +9,7 @@ function RTE({ name,control, label, defaultValue = "" }) {
 
       <Controller 
       name={name || "content"}
-      contol = {control}
+      control={control}
       render={({field : {onChange}})=>(
         <Editor 
         initialValue={defaultValue}

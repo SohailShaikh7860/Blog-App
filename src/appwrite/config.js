@@ -1,4 +1,4 @@
-import conf from "../conf/conf"
+import conf from "../conf/conf.js"
 import { Client, Databases,Storage,Query, ID } from "appwrite";
 
 export class Service{
@@ -33,7 +33,7 @@ export class Service{
         }
     }
 
-    async update(slug,{title, content, featuredImage, status}){
+    async updatePost(slug,{title, content, featuredImage, status}){
          try {
             return await this.databases.updateDocument(
                 conf.appwriteDataBase,
@@ -51,7 +51,7 @@ export class Service{
          }
     }
 
-    async deleteDoc(slug){
+    async deletePost(slug){
         try {
             return await this.databases.deleteDocument(
                 conf.appwriteDataBase,
@@ -90,8 +90,8 @@ export class Service{
         }
     }
 
-    //upload file 
-    async uplodFile(file){
+    // upload file
+    async uploadFile(file){
         try {
           return await this.bucket.createFile(
             conf.appwriteBucket,
@@ -126,4 +126,4 @@ export class Service{
 }
 
 const service = new Service();
-export default Service
+export default service

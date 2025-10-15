@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../store/authSlice";
 import { useDispatch } from "react-redux";
-import { Button, Input, logo } from "./index";
+import { Button, Input, Logo } from "./index";
 
 function Signup() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ function Signup() {
       const user = await authService.createAccount(data);
       if (user) {
         const userData = await authService.getCurrentUser();
-        if (userData) dispatch(login(userData));
+        if (userData) dispatch(login({ userData }));
         navigate("/");
       }
       navigate("/");
@@ -60,11 +60,7 @@ function Signup() {
               {...register("email", {
                 required: true,
                 validate: {
-                  matchPattern: (v) =>
-                    v.match(
-                      /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v) ||
-                        "Invalid email address"
-                    ),
+                  matchPattern: (v) => (/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v) || "Invalid email address"),
                 },
               })}
             />
@@ -73,7 +69,7 @@ function Signup() {
             label="Password: "
             placeholder="Enter your password"
             type="password"
-            {...register("password", { required: true, minLength: 6 })}
+            {...register("password", { required: true, minLength: 8 })}
             />
             <Button type="submit" className="w-full">Create Account</Button>
           </div>

@@ -30,6 +30,13 @@ export class AuthService {
             return userAccount;
           }
         } catch (error) {
+            if (error && (error.code === 400 || error.status === 400)) {
+                throw new Error("Signup failed. Ensure a valid email and an 8+ character password.");
+            }
+            if (error && (error.code === 409 || error.status === 409)) {
+                // Email already exists
+                throw new Error("An account with this email already exists. Please log in.");
+            }
             throw error;
         }
     }
@@ -38,6 +45,9 @@ export class AuthService {
         try {
            return await this.account.createEmailPasswordSession(email,password);
         } catch (error) {
+            if (error && (error.code === 401 || error.status === 401)) {
+                throw new Error("Invalid email or password.");
+            }
             throw error;
         }
     }

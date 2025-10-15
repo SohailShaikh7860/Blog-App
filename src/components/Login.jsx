@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../store/authSlice";
-import { Button, Input, logo } from "./index";
+import { Button, Input, Logo } from "./index";
 import { useDispatch } from "react-redux";
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
@@ -60,7 +60,7 @@ function Login() {
                     placeholder="Enter your email"
                     type="email"
                     {...register("email", { required:true, validate:{
-                        matchPattern: (v) => v.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v) || "Invalid email address")
+                        matchPattern: (v) => (/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v) || "Invalid email address")
                     } })}
                     />
                     <Input label="Password: "
